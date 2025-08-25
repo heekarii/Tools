@@ -11,7 +11,7 @@ def compare_resized_sr_to_gt(gt_dir, sr_dir, log_path="psnr_ssim_log.csv"):
 
     for fname in gt_files:
         base = os.path.splitext(fname)[0]
-        sr_name = base + '_x4_SR.png'
+        sr_name = base + '.png'
         gt_path = os.path.join(gt_dir, fname)
         sr_path = os.path.join(sr_dir, sr_name)
 
@@ -54,7 +54,7 @@ def compare_resized_sr_to_gt(gt_dir, sr_dir, log_path="psnr_ssim_log.csv"):
 
 # 예시 실행 (경로 맞게 수정!)
 compare_resized_sr_to_gt(
-    gt_dir="./GT",
-    sr_dir= "./tar",
-    log_path="GT-EDSR_x4.csv"
+    gt_dir="./orchids_gt",
+    sr_dir= "./orchids_renders",
+    log_path= "./orchids_bicubic.csv"
 )

@@ -5,7 +5,7 @@ from PIL import Image
 from skimage.metrics import peak_signal_noise_ratio as psnr
 from skimage.metrics import structural_similarity as ssim
 
-def calculate_psnr_ssim(hr_dir, sr_dir, log_path="psnr_ssim_log.csv"):
+def calculate_psnr_ssim(hr_dir, sr_dir, log_path="psnr_ssim_log_fern.csv"):
     hr_files = sorted([f for f in os.listdir(hr_dir) if f.lower().endswith(('.png', '.jpg', '.jpeg'))])
     psnr_list, ssim_list = [], []
     log_rows = []
@@ -14,7 +14,7 @@ def calculate_psnr_ssim(hr_dir, sr_dir, log_path="psnr_ssim_log.csv"):
 
         hr_path = os.path.join(hr_dir, fname)
         fname_core = os.path.splitext(fname)[0]
-        sr_fname = fname_core + "_x4_SR.png"
+        sr_fname = fname_core + "x4X4.png"
         sr_path = os.path.join(sr_dir, sr_fname)
         #sr_path = os.path.join(sr_dir, fname)
 
@@ -56,4 +56,4 @@ def calculate_psnr_ssim(hr_dir, sr_dir, log_path="psnr_ssim_log.csv"):
     print(f"\n📁 로그 저장 완료: {log_path}")
 
 # ✅ 경로 지정 후 실행
-calculate_psnr_ssim(hr_dir="./GT", sr_dir="./tar", log_path="psnr_ssim_log.csv")
+calculate_psnr_ssim(hr_dir="./fern_gt", sr_dir="./fern_afterft", log_path="fern_model_after.csv")
